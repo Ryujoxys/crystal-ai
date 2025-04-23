@@ -9,127 +9,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // AI接口设置
     let aiSettings = {
-        apiKey: localStorage.getItem('crystal_ai_api_key') || '',
-        apiUrl: localStorage.getItem('crystal_ai_api_url') || 'https://api.openai.com/v1/chat/completions',
-        model: localStorage.getItem('crystal_ai_model') || 'gpt-3.5-turbo',
-        customModel: localStorage.getItem('crystal_ai_custom_model') || ''
+        apiKey: 'sk-evgwlaexinmsvdrvlixvjjytqjwjrsvymnwifkbzxpbjduzf',
+        apiUrl: 'https://api.siliconflow.cn/v1/chat/completions',
+        model: 'custom',
+        customModel: 'THUDM/GLM-Z1-9B-0414'
     };
-    
-    // 调试弹窗功能
-    const debugLogo = document.getElementById('debug-logo');
-    const debugModal = document.getElementById('debug-modal');
-    const closeBtn = document.querySelector('.close-btn');
-    const saveBtn = document.getElementById('save-api-settings');
-    const aiModelSelect = document.getElementById('ai-model');
-    const customModelSetting = document.getElementById('custom-model-setting');
-    
-    // 初始化设置表单
-    if (aiSettings.apiKey) {
-        document.getElementById('ai-api-key').value = aiSettings.apiKey;
-    }
-    if (aiSettings.apiUrl) {
-        document.getElementById('ai-api-url').value = aiSettings.apiUrl;
-    }
-    aiModelSelect.value = aiSettings.model;
-    if (aiSettings.model === 'custom') {
-        customModelSetting.style.display = 'block';
-        document.getElementById('custom-model').value = aiSettings.customModel;
-    }
-    
-    // 点击logo显示调试弹窗
-    debugLogo.addEventListener('click', function() {
-        debugModal.style.display = 'flex';
-    });
-    
-    // 关闭调试弹窗
-    closeBtn.addEventListener('click', function() {
-        debugModal.style.display = 'none';
-    });
-    
-    // 点击弹窗外部关闭
-    window.addEventListener('click', function(event) {
-        if (event.target === debugModal) {
-            debugModal.style.display = 'none';
-        }
-    });
-    
-    // 模型选择变化时
-    aiModelSelect.addEventListener('change', function() {
-        if (this.value === 'custom') {
-            customModelSetting.style.display = 'block';
-        } else {
-            customModelSetting.style.display = 'none';
-        }
-    });
-    
-    // 保存API设置
-    saveBtn.addEventListener('click', function() {
-        const apiKey = document.getElementById('ai-api-key').value;
-        const apiUrl = document.getElementById('ai-api-url').value;
-        const model = aiModelSelect.value;
-        const customModel = document.getElementById('custom-model').value;
-        
-        if (!apiKey) {
-            showApiTestResult('请输入API密钥', false);
-            return;
-        }
-        
-        if (!apiUrl) {
-            showApiTestResult('请输入API服务地址', false);
-            return;
-        }
-        
-        if (model === 'custom' && !customModel) {
-            showApiTestResult('请输入自定义模型名称', false);
-            return;
-        }
-        
-        // 保存设置
-        aiSettings.apiKey = apiKey;
-        aiSettings.apiUrl = apiUrl;
-        aiSettings.model = model;
-        aiSettings.customModel = customModel;
-        
-        localStorage.setItem('crystal_ai_api_key', apiKey);
-        localStorage.setItem('crystal_ai_api_url', apiUrl);
-        localStorage.setItem('crystal_ai_model', model);
-        localStorage.setItem('crystal_ai_custom_model', customModel);
-        
-        // 测试API连接
-        testApiConnection();
-    });
-    
-    // 显示API测试结果
-    function showApiTestResult(message, success) {
-        const resultElement = document.getElementById('api-test-result');
-        resultElement.textContent = message;
-        resultElement.className = 'api-test-result ' + (success ? 'api-test-success' : 'api-test-error');
-        resultElement.style.display = 'block';
-        
-        setTimeout(function() {
-            if (success) {
-                debugModal.style.display = 'none';
-            }
-        }, success ? 1500 : 3000);
-    }
-    
-    // 测试API连接
-    function testApiConnection() {
-        const testElement = document.getElementById('api-test-result');
-        testElement.textContent = '正在测试API连接...';
-        testElement.className = 'api-test-result';
-        testElement.style.display = 'block';
-        
-        // 这里实际项目中应该发送一个简单的API请求来测试连接
-        // 这里我们简化为只检查是否有API密钥
-        if (aiSettings.apiKey) {
-            setTimeout(function() {
-                showApiTestResult('API设置保存成功', true);
-            }, 1000);
-        } else {
-            showApiTestResult('API密钥无效', false);
-        }
-    }
     
     // AI分析功能
     const aiAnalyzeBtn = document.getElementById('ai-analyze-btn');
@@ -160,12 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        if (!aiSettings.apiKey) {
-            alert('请先设置AI API密钥');
-            debugModal.style.display = 'flex';
-            return;
-        }
-        
         // 显示加载状态
         this.disabled = true;
         const statusElement = document.querySelector('.ai-status');
@@ -181,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => {
                 console.error('AI分析失败:', error);
-                alert('AI分析失败，请检查API设置或稍后再试');
+                alert('AI分析失败，请稍后再试');
                 this.disabled = false;
                 statusElement.textContent = 'AI分析失败，请重试';
             });
@@ -225,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     'Authorization': `Bearer ${aiSettings.apiKey}`
                 },
                 body: JSON.stringify({
-                    model: aiSettings.model === 'custom' ? aiSettings.customModel : aiSettings.model,
+                    model: aiSettings.customModel,
                     messages: [
                         {
                             role: "system",
