@@ -1,0 +1,1520 @@
+/* 基础样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* 容器样式 */
+.container {
+    width: 70%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* 页面切换 */
+.page {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 按钮样式 */
+.btn {
+    background-color: #8a6bc5;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(138, 107, 197, 0.2);
+}
+
+.btn:hover {
+    background-color: #7559b2;
+    box-shadow: 0 4px 12px rgba(138, 107, 197, 0.3);
+    transform: translateY(-2px);
+}
+
+/* 首页样式 */
+#home-page {
+    text-align: center;
+}
+
+.home-hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(248, 247, 255, 0.9) 0%, rgba(252, 246, 255, 0.9) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.home-hero:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 30%;
+    background: linear-gradient(135deg, rgba(138, 107, 197, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+    clip-path: polygon(100% 0, 0 0, 100% 100%);
+    z-index: 1;
+}
+
+.home-hero:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30%;
+    height: 30%;
+    background: linear-gradient(135deg, rgba(197, 107, 174, 0.05) 30%, rgba(255, 255, 255, 0) 100%);
+    clip-path: polygon(0 100%, 0 0, 100% 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 700px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.home-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.home-content:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, rgba(138, 107, 197, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+    clip-path: polygon(100% 0, 0 0, 100% 100%);
+    z-index: 1;
+}
+
+.home-content:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, rgba(197, 107, 174, 0.1) 30%, rgba(255, 255, 255, 0) 100%);
+    clip-path: polygon(0 100%, 0 0, 100% 100%);
+    z-index: 1;
+}
+
+.home-content h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+    color: #4a3b76;
+    text-align: center;
+    position: relative;
+}
+
+.home-content h1:after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(138, 107, 197, 0.5), rgba(197, 107, 174, 0.5));
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.subtitle {
+    font-size: 18px;
+    margin-bottom: 25px;
+    color: #666;
+    text-align: center;
+}
+
+#start-btn {
+    display: block;
+    margin: 0 auto 40px;
+    padding: 12px 30px;
+    font-size: 18px;
+    transition: all 0.4s ease;
+    background: linear-gradient(135deg, #8a6bc5 0%, #c56bae 100%);
+    box-shadow: 0 5px 15px rgba(138, 107, 197, 0.3);
+}
+
+#start-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(138, 107, 197, 0.4);
+}
+
+.intro-story {
+    background-color: #f9f7ff;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    box-shadow: inset 0 0 15px rgba(138, 107, 197, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.intro-story:before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    right: 30px;
+    width: 30px;
+    height: 30px;
+    background-color: #f9f7ff;
+    transform: rotate(45deg);
+    box-shadow: inset 0 0 10px rgba(138, 107, 197, 0.1);
+    z-index: -1;
+}
+
+.intro-story h2 {
+    color: #4a3b76;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.intro-story h2:before, .intro-story h2:after {
+    content: '✧';
+    color: rgba(138, 107, 197, 0.5);
+    display: inline-block;
+    margin: 0 10px;
+    font-size: 20px;
+}
+
+.intro-story p {
+    margin-bottom: 15px;
+    line-height: 1.8;
+    color: #555;
+}
+
+/* 表单页样式 */
+#form-page {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+#form-page h1 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #4a3b76;
+}
+
+.form-group {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.form-group h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #555;
+    font-weight: 500;
+}
+
+.aspirations {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.aspiration-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f4f0ff;
+    transition: all 0.2s ease;
+}
+
+.aspiration-item:hover {
+    background-color: #e9e1ff;
+}
+
+.aspiration-item input[type="checkbox"] {
+    margin-right: 10px;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #8a6bc5;
+    border-radius: 4px;
+    outline: none;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.aspiration-item input[type="checkbox"]:checked {
+    background-color: #8a6bc5;
+}
+
+.aspiration-item input[type="checkbox"]:checked:after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.aspiration-item label {
+    cursor: pointer;
+}
+
+/* 自定义诉求字段 */
+.custom-field {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f9f7ff;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.custom-field.hidden {
+    display: none;
+}
+
+.custom-item {
+    border: 2px dashed #d0c3f1;
+}
+
+/* 必填项标记 */
+.form-field label.required::after {
+    content: '*';
+    color: #e74c3c;
+    margin-left: 4px;
+}
+
+/* 生日和个人信息字段 */
+.birthday-group, .personal-info-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.form-field {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.form-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-field select, .form-field textarea, .form-field input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.form-field select:focus, 
+.form-field textarea:focus, 
+.form-field input[type="text"]:focus {
+    border-color: #8a6bc5;
+    box-shadow: 0 0 0 3px rgba(138, 107, 197, 0.2);
+    outline: none;
+}
+
+/* 必填项的输入框样式 */
+.form-field.required select,
+.form-field.required input[type="text"] {
+    border-left: 3px solid #8a6bc5;
+}
+
+.form-field textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+#crystal-form button[type="submit"] {
+    display: block;
+    margin: 40px auto 0;
+    width: 200px;
+    max-width: 100%;
+}
+
+/* 结果页样式 */
+#result-page {
+    padding: 2rem;
+}
+
+.crystal-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.crystal-card:hover {
+    transform: translateY(-5px);
+}
+
+.crystal-header {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+}
+
+.crystal-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-right: 1rem;
+}
+
+.crystal-title {
+    flex: 1;
+}
+
+.crystal-title h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.8rem;
+}
+
+.english-name {
+    color: #666;
+    font-style: italic;
+    margin: 0.3rem 0;
+}
+
+.preferred-tag {
+    display: inline-block;
+    background-color: #ff6b6b;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.crystal-info {
+    padding: 1.5rem;
+}
+
+.crystal-description {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+.tag-section {
+    margin-bottom: 1.2rem;
+}
+
+.tag-section h4 {
+    margin: 0 0 0.5rem 0;
+    color: #555;
+    font-size: 1rem;
+}
+
+.tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag-pill {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background-color: #e9ecef;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #495057;
+}
+
+.element-tag {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.chakra-tag {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.energy-tag {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.usage-section {
+    margin: 1.5rem 0;
+}
+
+.usage-section h4 {
+    margin: 0 0 0.8rem 0;
+    color: #555;
+}
+
+.usage-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.usage-item {
+    background-color: #f8f9fa;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    border-left: 4px solid #6c5ce7;
+    line-height: 1.4;
+}
+
+.energy-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.energy-item {
+    flex: 1;
+    min-width: 200px;
+}
+
+.energy-item h4 {
+    margin: 0 0 0.5rem 0;
+    color: #555;
+    font-size: 1rem;
+}
+
+.personal-greeting {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    color: #333;
+    border-bottom: 2px solid #6c5ce7;
+    padding-bottom: 0.5rem;
+}
+
+#recommendation-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.crystal-card {
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.crystal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.preferred-crystal {
+    border: 2px solid #8a6bc5;
+    box-shadow: 0 8px 25px rgba(138, 107, 197, 0.2);
+    position: relative;
+}
+
+.preferred-crystal::before {
+    content: '推荐';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #8a6bc5;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 1;
+}
+
+.preferred-tag {
+    display: inline-block;
+    font-size: 12px;
+    background-color: #8a6bc5;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    margin-left: 8px;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+.crystal-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.crystal-info {
+    padding: 20px;
+}
+
+.crystal-info h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #4a3b76;
+}
+
+.crystal-info p {
+    color: #666;
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+
+.crystal-benefits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 15px;
+}
+
+.benefit-tag {
+    background-color: #f4f0ff;
+    color: #8a6bc5;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+#back-btn {
+    margin-top: 20px;
+    max-width: 200px;
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+    .container {
+        width: 85%;
+    }
+    
+    #form-page, #result-page {
+        max-width: 85%;
+        padding: 35px 25px;
+    }
+    
+    .crystal-image {
+        height: 180px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 20px 15px;
+    }
+    
+    #form-page, .home-content, #result-page {
+        padding: 30px 15px;
+        max-width: 95%;
+    }
+    
+    .birthday-group, .personal-info-group {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .home-content h1 {
+        font-size: 28px;
+    }
+    
+    .home-content p {
+        font-size: 16px;
+    }
+
+    .aspirations {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+    
+    .form-field {
+        margin-bottom: 12px;
+    }
+    
+    .custom-field {
+        padding: 12px;
+    }
+
+    .logo-container {
+        top: 10px;
+        left: 10px;
+    }
+    
+    .crystal-logo {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .intro-story {
+        padding: 20px;
+    }
+    
+    .testimonial-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .testimonial-card {
+        max-width: 100%;
+    }
+
+    .home-hero {
+        padding: 20px;
+    }
+    
+    .btn-highlight {
+        font-size: 18px !important;
+        padding: 12px 30px !important;
+    }
+    
+    .hero-content h1 {
+        font-size: 28px !important;
+    }
+    
+    .hero-content .subtitle {
+        font-size: 16px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+        padding: 15px 10px;
+    }
+
+    .aspirations {
+        grid-template-columns: 1fr;
+    }
+
+    #form-page, #result-page {
+        padding: 20px 15px;
+        max-width: 100%;
+        border-radius: 10px;
+    }
+    
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+    .home-content h1 {
+        font-size: 24px;
+    }
+
+    .form-group h2 {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+
+    .btn {
+        padding: 10px 18px;
+        font-size: 14px;
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .form-field select, .form-field textarea, .form-field input[type="text"] {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .personal-greeting {
+        font-size: 16px;
+        padding: 8px;
+        margin-bottom: 20px;
+    }
+    
+    #recommendation-container {
+        gap: 20px;
+    }
+}
+
+/* 必填项文本样式 */
+.required-text {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.form-note {
+    margin: 20px 0;
+    font-size: 14px;
+    color: #666;
+    text-align: right;
+}
+
+/* 自定义诉求项强调 */
+.custom-item {
+    border: 2px dashed #d0c3f1;
+}
+
+.custom-item.active {
+    border: 2px solid #8a6bc5;
+    background-color: #e9e1ff;
+}
+
+/* 表单验证样式 */
+.form-field.required select.valid,
+.form-field.required input.valid {
+    border-left: 3px solid #2ecc71;
+}
+
+.form-field.required select:invalid,
+.form-field.required input:invalid {
+    border-left: 3px solid #e74c3c;
+}
+
+/* Logo样式 */
+.logo-container {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+}
+
+.crystal-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #8a6bc5 0%, #c56bae 100%);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(138, 107, 197, 0.3),
+                inset 0 -10px 20px rgba(255, 255, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.crystal-logo:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%);
+    transform: rotate(45deg);
+    pointer-events: none;
+}
+
+.crystal-logo:hover {
+    transform: translateY(-3px) rotate(5deg);
+    box-shadow: 0 6px 20px rgba(138, 107, 197, 0.4),
+                inset 0 -15px 30px rgba(255, 255, 255, 0.4);
+}
+
+.logo-text {
+    position: absolute;
+    bottom: -30px;
+    white-space: nowrap;
+    font-weight: 700;
+    color: #4a3b76;
+    font-size: 14px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.crystal-logo:hover .logo-text {
+    bottom: -25px;
+    opacity: 1;
+}
+
+/* 用户评论样式 */
+.testimonials {
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.testimonials:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255,255,255,0), rgba(138, 107, 197, 0.2), rgba(255,255,255,0));
+    z-index: 1;
+}
+
+.testimonials h2 {
+    color: #4a3b76;
+    font-size: 24px;
+    margin-bottom: 25px;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    padding: 0 20px;
+    background-color: white;
+    z-index: 2;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.testimonial-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    position: relative;
+}
+
+.testimonial-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    flex: 1;
+    min-width: 200px;
+    max-width: 250px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+    backdrop-filter: blur(5px);
+    border-top: 4px solid transparent;
+    border-image: linear-gradient(to right, #8a6bc5, #c56bae);
+    border-image-slice: 1;
+}
+
+.testimonial-card:nth-child(1) {
+    transform: rotate(-2deg);
+}
+
+.testimonial-card:nth-child(3) {
+    transform: rotate(2deg);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px) rotate(0);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    z-index: 3;
+}
+
+.testimonial-avatar {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+    position: relative;
+    align-self: center;
+}
+
+.crystal-shape {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    background: linear-gradient(135deg, rgba(138, 107, 197, 0.7) 0%, rgba(197, 107, 174, 0.7) 100%);
+    box-shadow: 0 5px 15px rgba(138, 107, 197, 0.3);
+}
+
+.testimonial-avatar:before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 30px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.7);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    opacity: 0.8;
+}
+
+.testimonial-content {
+    flex: 1;
+}
+
+.testimonial-content p {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.6;
+    position: relative;
+}
+
+.testimonial-content p:before, .testimonial-content p:after {
+    content: '"';
+    font-size: 24px;
+    color: rgba(138, 107, 197, 0.3);
+    position: absolute;
+}
+
+.testimonial-content p:before {
+    top: -10px;
+    left: -5px;
+}
+
+.testimonial-content p:after {
+    bottom: -15px;
+    right: -5px;
+}
+
+.testimonial-author {
+    text-align: right;
+    color: #8a6bc5;
+    font-weight: 500;
+}
+
+/* 水晶知识部分样式 */
+.crystal-knowledge-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.crystal-info-block {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+}
+
+.crystal-info-block:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, rgba(138, 107, 197, 0.7), rgba(197, 107, 174, 0.7));
+    z-index: 1;
+}
+
+.crystal-info-block:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.crystal-origin:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(238, 232, 255, 0.9));
+}
+
+.crystal-connection:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(232, 245, 255, 0.9));
+}
+
+.crystal-selection:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 232, 245, 0.9));
+}
+
+.crystal-healing:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(245, 232, 255, 0.9));
+}
+
+.info-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, rgba(138, 107, 197, 0.2), rgba(197, 107, 174, 0.2));
+    border-radius: 50%;
+}
+
+.mystic-symbol {
+    font-size: 24px;
+    color: rgba(138, 107, 197, 0.9);
+}
+
+.crystal-info-block h3 {
+    margin-bottom: 12px;
+    color: #4a3b76;
+    font-size: 18px;
+    position: relative;
+    display: inline-block;
+}
+
+.crystal-info-block h3:after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(138, 107, 197, 0.7), rgba(197, 107, 174, 0.7));
+    transition: width 0.3s ease;
+}
+
+.crystal-info-block:hover h3:after {
+    width: 100%;
+}
+
+.crystal-info-block p {
+    color: #555;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* 水晶益处带样式 */
+.crystal-benefits-band {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 35px 0;
+    padding: 15px;
+    background: linear-gradient(90deg, rgba(238, 232, 255, 0.5), rgba(232, 245, 255, 0.5), rgba(255, 232, 245, 0.5));
+    border-radius: 50px;
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.03);
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    margin: 5px 10px;
+    transition: transform 0.3s ease;
+}
+
+.benefit-item:hover {
+    transform: translateY(-3px);
+}
+
+.benefit-icon {
+    font-size: 18px;
+    color: #8a6bc5;
+    margin-right: 8px;
+}
+
+.benefit-text {
+    font-weight: 500;
+    color: #555;
+}
+
+/* 水晶引用样式 */
+.crystal-quote {
+    position: relative;
+    padding: 25px 40px;
+    margin: 20px 0 10px;
+    text-align: center;
+    font-style: italic;
+}
+
+.crystal-quote:before, .crystal-quote:after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    opacity: 0.3;
+}
+
+.crystal-quote:before {
+    top: 0;
+    left: 0;
+    border-top: 3px solid #8a6bc5;
+    border-left: 3px solid #8a6bc5;
+}
+
+.crystal-quote:after {
+    bottom: 0;
+    right: 0;
+    border-bottom: 3px solid #c56bae;
+    border-right: 3px solid #c56bae;
+}
+
+.crystal-quote p {
+    font-size: 18px;
+    color: #4a3b76;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .crystal-knowledge-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .crystal-benefits-band {
+        justify-content: center;
+        padding: 10px;
+    }
+    
+    .benefit-item {
+        margin: 8px 15px;
+    }
+    
+    .crystal-quote {
+        padding: 20px 30px;
+    }
+    
+    .crystal-quote p {
+        font-size: 16px;
+    }
+}
+
+/* 高亮按钮样式 */
+.btn-highlight {
+    font-size: 22px !important;
+    padding: 15px 40px !important;
+    background: linear-gradient(135deg, #8a6bc5 0%, #c56bae 100%) !important;
+    box-shadow: 0 10px 30px rgba(138, 107, 197, 0.4) !important;
+    transform: scale(1.1);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-highlight:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.5s ease;
+}
+
+.btn-highlight:hover {
+    transform: scale(1.15) translateY(-5px);
+    box-shadow: 0 15px 40px rgba(138, 107, 197, 0.5) !important;
+}
+
+.btn-highlight:hover:before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.btn-highlight:active {
+    transform: scale(1.05) translateY(-2px);
+}
+
+/* 滚动提示样式 */
+.scroll-indicator {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.scroll-indicator span {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #8a6bc5;
+}
+
+.scroll-arrow {
+    font-size: 24px;
+    animation: bounce 2s infinite;
+    color: #8a6bc5;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.scroll-indicator:hover {
+    opacity: 1;
+}
+
+/* 滚动内容区域 */
+.home-scrollable-content {
+    padding: 50px 0;
+    background-color: white;
+}
+
+/* 调试弹窗样式 */
+.debug-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.debug-modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #555;
+}
+
+.debug-modal-content h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #4a3b76;
+    text-align: center;
+}
+
+.api-setting {
+    margin-bottom: 20px;
+}
+
+.api-setting label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+.api-setting input, .api-setting select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.api-test-result {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    display: none;
+}
+
+.api-test-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.api-test-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+#debug-logo {
+    cursor: pointer;
+}
+
+/* AI分析功能样式 */
+#custom-aspiration {
+    width: 100%;
+    height: 100px;
+    resize: vertical;
+    margin-bottom: 10px;
+}
+
+.ai-analyze-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.btn-small {
+    background-color: #8a6bc5;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-right: 15px;
+}
+
+.btn-small:hover {
+    background-color: #7559b2;
+}
+
+.ai-status {
+    color: #666;
+    font-size: 14px;
+    flex: 1;
+}
+
+.ai-result {
+    background-color: #f9f7ff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.ai-result.hidden {
+    display: none;
+}
+
+.ai-result p {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: #4a3b76;
+}
+
+.ai-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.ai-tag {
+    background-color: #dfd8f3;
+    color: #4a3b76;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.ai-tag-remove {
+    margin-left: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #8a6bc5;
+}
+
+.ai-loading {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(138, 107, 197, 0.3);
+    border-radius: 50%;
+    border-top-color: #8a6bc5;
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* 随机推荐水晶样式 */
+.random-crystal {
+    border: 2px solid #6bb8c5;
+    box-shadow: 0 8px 25px rgba(107, 184, 197, 0.2);
+    position: relative;
+}
+
+.random-crystal::before {
+    content: '特推';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #6bb8c5;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 1;
+}
+
+.random-tag {
+    display: inline-block;
+    font-size: 12px;
+    background-color: #6bb8c5;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 12px;
+    margin-left: 8px;
+    vertical-align: middle;
+    font-weight: bold;
+} 

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>009Crystal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 调试弹窗 -->
+    <div id="debug-modal" class="debug-modal">
+        <div class="debug-modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>AI调试设置</h2>
+            <div class="api-setting">
+                <label for="ai-api-key">请输入AI API密钥：</label>
+                <input type="password" id="ai-api-key" placeholder="API密钥">
+            </div>
+            <div class="api-setting">
+                <label for="ai-api-url">AI服务地址：</label>
+                <input type="text" id="ai-api-url" placeholder="https://api.example.com/v1/completions">
+            </div>
+            <div class="api-setting">
+                <label for="ai-model">AI模型选择：</label>
+                <select id="ai-model">
+                    <option value="gpt-3.5-turbo">GPT-3.5 Turbo</option>
+                    <option value="gpt-4">GPT-4</option>
+                    <option value="custom">自定义</option>
+                </select>
+            </div>
+            <div class="api-setting" id="custom-model-setting" style="display: none;">
+                <label for="custom-model">自定义模型名称：</label>
+                <input type="text" id="custom-model" placeholder="模型名称">
+            </div>
+            <button id="save-api-settings" class="btn">保存设置</button>
+            <div id="api-test-result" class="api-test-result"></div>
+        </div>
+    </div>
+
+    <div class="logo-container">
+        <div class="crystal-logo" id="debug-logo">
+            <span class="logo-text">009Crystal</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- 首页 -->
+        <section id="home-page" class="page active">
+            <!-- 主页顶部内容 -->
+            <div class="home-hero">
+                <div class="hero-content">
+                    <h1>Crystal DIY
+                    </h1>
+                    <p class="subtitle">基于您的生辰八字和个人诉求，为您推荐最适合的定制化水晶</p>
+                    
+                    <button id="start-btn" class="btn btn-highlight">开始定制</button>
+                </div>
+                
+                <div class="scroll-indicator" id="scroll-indicator">
+                    <span>向下滑动了解更多</span>
+                    <div class="scroll-arrow">↓</div>
+                </div>
+            </div>
+            
+            <!-- 下方滚动内容 -->
+            <div class="home-scrollable-content">
+                <div class="home-content">
+                    <div class="intro-story">
+                        <h2>水晶的神秘能量</h2>
+                        
+                        <div class="crystal-knowledge-container">
+                            <div class="crystal-origin crystal-info-block">
+                                <div class="info-icon"><span class="mystic-symbol">✦</span></div>
+                                <h3>大自然的馈赠</h3>
+                                <p>远古时期，地球深处的能量与宇宙辐射共鸣，历经千万年压力与热能淬炼，形成了蕴含星辰之力的水晶。每一块水晶都记录着独特的能量印记，是地球与宇宙对话的见证者。</p>
+                            </div>
+                            
+                            <div class="crystal-connection crystal-info-block">
+                                <div class="info-icon"><span class="mystic-symbol">⟡</span></div>
+                                <h3>能量的共振</h3>
+                                <p>水晶以特定频率振动，当与人体能量场相遇时，会产生微妙的共鸣。这种共鸣能够疏通身体能量阻塞，平衡紊乱的气场，犹如一场无声的能量之舞，重新调和内在与外在的平衡。</p>
+                            </div>
+                            
+                            <div class="crystal-selection crystal-info-block">
+                                <div class="info-icon"><span class="mystic-symbol">⌬</span></div>
+                                <h3>选择的奥秘</h3>
+                                <p>适合的水晶会以一种微妙的方式吸引你，仿佛命中注定的相遇。而我们的定制系统，通过古老的五行生克与现代的能量学原理，为你匹配最契合的水晶伴侣，放大你内在的力量，引导你走向丰盛。</p>
+                            </div>
+                            
+                            <div class="crystal-healing crystal-info-block">
+                                <div class="info-icon"><span class="mystic-symbol">⍟</span></div>
+                                <h3>转化的力量</h3>
+                                <p>水晶不仅仅是美丽的装饰，更是强大的能量转化器。它们能吸收负面能量，转化为积极的振动频率，如同黑暗中的明灯，引导我们穿越困境，找到内心深处的平静与力量，开启自我疗愈之旅。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="crystal-benefits-band">
+                            <div class="benefit-item">
+                                <span class="benefit-icon">❈</span>
+                                <span class="benefit-text">平衡能量</span>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="benefit-icon">✾</span>
+                                <span class="benefit-text">净化心灵</span>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="benefit-icon">❋</span>
+                                <span class="benefit-text">增强直觉</span>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="benefit-icon">✻</span>
+                                <span class="benefit-text">引导丰盛</span>
+                            </div>
+                        </div>
+                        
+                        <div class="crystal-quote">
+                            <p>"水晶是蕴藏在石头中的光，是凝固的星辰，是大地与宇宙相互交融的载体。"</p>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonials">
+                        <h2>用户心得分享</h2>
+                        <div class="testimonial-container">
+                            <div class="testimonial-card">
+                                <div class="testimonial-avatar crystal-shape"></div>
+                                <div class="testimonial-content">
+                                    <p>"紫水晶改善了我的睡眠质量，每晚放在床头，焦虑感减轻，醒来精力充沛。"</p>
+                                    <div class="testimonial-author">— 星辰梦想家</div>
+                                </div>
+                            </div>
+                            <div class="testimonial-card">
+                                <div class="testimonial-avatar crystal-shape"></div>
+                                <div class="testimonial-content">
+                                    <p>"黄水晶为我带来财运，工作障碍减少，意外收获升职好消息。这个定制系统太神奇了！"</p>
+                                    <div class="testimonial-author">— 云间漫步者</div>
+                                </div>
+                            </div>
+                            <div class="testimonial-card">
+                                <div class="testimonial-avatar crystal-shape"></div>
+                                <div class="testimonial-content">
+                                    <p>"月光石帮我度过情感低谷，触摸它时总能感受到宁静能量，像是找到了心灵的港湾。"</p>
+                                    <div class="testimonial-author">— 幻光守望</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 表单页 -->
+        <section id="form-page" class="page">
+            <h1>您的个人信息</h1>
+            <form id="crystal-form">
+                <div class="form-group">
+                    <h2>您的诉求 <span class="required-text">*</span></h2>
+                    <div class="aspirations">
+                        <div class="aspiration-item">
+                            <input type="checkbox" id="health" name="aspirations" value="健康">
+                            <label for="health">健康</label>
+                        </div>
+                        <div class="aspiration-item">
+                            <input type="checkbox" id="wealth" name="aspirations" value="财富">
+                            <label for="wealth">财富</label>
+                        </div>
+                        <div class="aspiration-item">
+                            <input type="checkbox" id="love" name="aspirations" value="爱情">
+                            <label for="love">爱情</label>
+                        </div>
+                        <div class="aspiration-item">
+                            <input type="checkbox" id="career" name="aspirations" value="事业">
+                            <label for="career">事业</label>
+                        </div>
+                        <div class="aspiration-item">
+                            <input type="checkbox" id="wisdom" name="aspirations" value="智慧">
+                            <label for="wisdom">智慧</label>
+                        </div>
+                        <div class="aspiration-item">
+                            <input type="checkbox" id="protection" name="aspirations" value="保护">
+                            <label for="protection">保护</label>
+                        </div>
+                        <div class="aspiration-item">
+                            <input type="checkbox" id="peace" name="aspirations" value="平静">
+                            <label for="peace">平静</label>
+                        </div>
+                        <div class="aspiration-item">
+                            <input type="checkbox" id="confidence" name="aspirations" value="自信">
+                            <label for="confidence">自信</label>
+                        </div>
+                        <div class="aspiration-item custom-item" id="custom-item">
+                            <input type="checkbox" id="custom" name="aspirations" value="custom">
+                            <label for="custom">自定义</label>
+                        </div>
+                    </div>
+                    
+                    <div id="custom-aspiration-field" class="custom-field hidden">
+                        <div class="form-field">
+                            <label for="custom-aspiration">请输入您的自定义诉求</label>
+                            <textarea id="custom-aspiration" name="custom-aspiration" placeholder="例如：我想要提升记忆力，改善人际关系，减轻工作压力..."></textarea>
+                            <div class="ai-analyze-container">
+                                <button type="button" id="ai-analyze-btn" class="btn-small">AI分析</button>
+                                <div class="ai-status">AI将分析您的诉求并转化为相应的选项</div>
+                            </div>
+                            <div id="ai-result" class="ai-result hidden">
+                                <p>AI分析结果：</p>
+                                <div class="ai-tags"></div>
+                                <button type="button" id="apply-ai-result" class="btn-small">应用结果</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <h2>您的生辰八字 <span class="required-text">*</span></h2>
+                    <div class="birthday-group">
+                        <div class="form-field required">
+                            <label for="year" class="required">出生年份</label>
+                            <select id="year" name="year" required>
+                                <option value="" disabled selected>选择年份</option>
+                                <!-- 年份选项将由JS生成 -->
+                            </select>
+                        </div>
+                        <div class="form-field required">
+                            <label for="month" class="required">月份</label>
+                            <select id="month" name="month" required>
+                                <option value="" disabled selected>选择月份</option>
+                                <!-- 月份选项将由JS生成 -->
+                            </select>
+                        </div>
+                        <div class="form-field required">
+                            <label for="day" class="required">日期</label>
+                            <select id="day" name="day" required>
+                                <option value="" disabled selected>选择日期</option>
+                                <!-- 日期选项将由JS生成 -->
+                            </select>
+                        </div>
+                        <div class="form-field required">
+                            <label for="hour" class="required">时辰</label>
+                            <select id="hour" name="hour" required>
+                                <option value="" disabled selected>选择时辰</option>
+                                <option value="子时">子时 (23:00-01:00)</option>
+                                <option value="丑时">丑时 (01:00-03:00)</option>
+                                <option value="寅时">寅时 (03:00-05:00)</option>
+                                <option value="卯时">卯时 (05:00-07:00)</option>
+                                <option value="辰时">辰时 (07:00-09:00)</option>
+                                <option value="巳时">巳时 (09:00-11:00)</option>
+                                <option value="午时">午时 (11:00-13:00)</option>
+                                <option value="未时">未时 (13:00-15:00)</option>
+                                <option value="申时">申时 (15:00-17:00)</option>
+                                <option value="酉时">酉时 (17:00-19:00)</option>
+                                <option value="戌时">戌时 (19:00-21:00)</option>
+                                <option value="亥时">亥时 (21:00-23:00)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <h2>个性化信息</h2>
+                    <div class="personal-info-group">
+                        <div class="form-field">
+                            <label for="name">您的称呼（选填）</label>
+                            <input type="text" id="name" name="name" placeholder="请输入您的姓名或昵称">
+                        </div>
+                        <div class="form-field">
+                            <label for="gender">性别（选填）</label>
+                            <select id="gender" name="gender">
+                                <option value="" selected>请选择</option>
+                                <option value="男">男</option>
+                                <option value="女">女</option>
+                                <option value="其他">其他</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label for="preference">您偏好的水晶类型（选填）</label>
+                            <input type="text" id="preference" name="preference" placeholder="例如：紫水晶、黑曜石等">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <h2>其他信息（选填）</h2>
+                    <div class="form-field">
+                        <label for="additional">您的其他需求或备注</label>
+                        <textarea id="additional" name="additional" placeholder="请输入其他您想让我们知道的信息..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-note">
+                    <p><span class="required-text">*</span> 表示必填项</p>
+                </div>
+
+                <button type="submit" class="btn">获取定制推荐</button>
+            </form>
+        </section>
+
+        <!-- 结果页 -->
+        <section id="result-page" class="page">
+            <h1>您的定制水晶推荐</h1>
+            <div id="recommendation-container">
+                <!-- 推荐结果将由JS动态生成 -->
+            </div>
+            <button id="back-btn" class="btn">重新定制</button>
+            
+            <!-- 图片预加载区域 -->
+            <div id="preload-images" style="display:none;"></div>
+        </section>
+    </div>
+
+    <script src="crystalDatabase.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
