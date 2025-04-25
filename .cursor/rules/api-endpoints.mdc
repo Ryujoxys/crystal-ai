@@ -1,0 +1,82 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Crystal AI API端点
+
+本项目后端API由[server.js](mdc:server.js)提供，主要提供以下端点：
+
+## 测试端点
+
+```
+GET /api/test
+```
+用于测试后端连接是否正常
+
+## 水晶数据端点
+
+```
+GET /api/crystals
+```
+获取所有水晶数据列表
+
+```
+GET /api/crystals/:id
+```
+根据ID获取特定水晶详情
+
+## 推荐相关端点
+
+```
+POST /api/recommend
+```
+基于用户输入的生辰八字和诉求生成水晶推荐。
+
+请求体格式：
+```json
+{
+  "aspirations": ["健康", "财富", "爱情"],
+  "year": "1990",
+  "month": "5",
+  "day": "10",
+  "hour": "子时",
+  "name": "张三",
+  "gender": "男",
+  "preference": ["紫色", "透明"],
+  "additional": "希望帮助睡眠"
+}
+```
+
+```
+POST /api/recommend-with-db
+```
+使用Supabase数据库进行推荐计算，返回更精确的结果
+
+## 用户数据端点
+
+```
+POST /api/save-user-data
+```
+保存用户的输入数据到数据库
+
+## 响应格式
+
+所有API端点返回JSON格式数据，标准结构如下：
+
+成功响应：
+```json
+{
+  "success": true,
+  "data": { ... }
+}
+```
+
+错误响应：
+```json
+{
+  "success": false,
+  "error": "错误信息",
+  "details": "详细错误描述"
+}
+```
