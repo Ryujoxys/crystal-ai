@@ -1,5 +1,83 @@
 ---
-description:
-globs:
+description: 
+globs: 
 alwaysApply: false
 ---
+# Crystal AI 推荐算法
+
+本项目在[crystalDatabase.js](mdc:crystalDatabase.js)中实现了水晶推荐算法，主要包括以下几个核心功能模块。
+
+## 八字五行分析
+
+```javascript
+function analyzeBaZi(year, month, day, hour) {
+  // 根据用户生辰八字计算五行属性
+  // 返回五行分布：{ 金: 数值, 木: 数值, 水: 数值, 火: 数值, 土: 数值 }
+}
+```
+
+通过传统五行理论，分析用户八字中的五行分布，确定用户的五行偏向和缺失。
+
+## 诉求匹配分析
+
+```javascript
+function matchAspirations(aspirations, crystals) {
+  // 根据用户诉求与水晶功效进行匹配
+  // 返回每个水晶的匹配分数
+}
+```
+
+将用户的诉求（如健康、财富、爱情等）与水晶的功效进行语义匹配，计算相关性分数。
+
+## 综合评分计算
+
+```javascript
+function calculateTotalScore(crystals, baziAnalysis, aspirations, preferences) {
+  // 结合五行匹配度、诉求匹配度和偏好匹配度计算总分
+}
+```
+
+使用加权算法，结合多个因素计算最终水晶推荐评分：
+- 五行匹配权重：40%
+- 诉求匹配权重：35%
+- 偏好匹配权重：15%
+- 能量等级权重：10%
+
+## 推荐组合生成
+
+```javascript
+function generateCombinations(mainCrystal, allCrystals, baziAnalysis) {
+  // 基于主水晶，推荐能量互补的次要水晶
+}
+```
+
+算法会根据用户五行平衡需求，推荐能量互补的水晶组合，确保整体能量的平衡与协调。
+
+## 个性化建议生成
+
+```javascript
+function generatePersonalizedAdvice(mainCrystal, secondaryCrystals, userData) {
+  // 根据用户数据和推荐水晶生成个性化使用建议
+}
+```
+
+算法会根据用户的具体情况，生成个性化的水晶使用方法、佩戴时机和注意事项。
+
+## 算法调参
+
+系统支持以下参数调整，实现算法优化：
+
+1. 五行匹配权重调整
+2. 关键词匹配阈值设置
+3. 能量互补系数调整
+4. 季节因素调整
+
+## 算法使用流程
+
+1. 收集用户信息（生辰八字、诉求、偏好）
+2. 分析用户八字五行分布
+3. 计算水晶与用户诉求的匹配度
+4. 综合计算每个水晶的总评分
+5. 选择评分最高的水晶作为主推荐
+6. 生成互补的水晶组合作为次要推荐
+7. 生成个性化使用建议
