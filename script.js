@@ -466,28 +466,112 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // 生成推荐结果
-        generateRecommendations(
-            userAspirations, 
-            birthYear, 
-            birthMonth, 
-            birthDay, 
-            birthHour, 
-            {
+        // 整合所有参数到一个对象
+        const userData = {
+            aspirations: userAspirations,
+            birth: {
+                year: birthYear,
+                month: birthMonth,
+                day: birthDay,
+                hour: birthHour
+            },
+            personalInfo: {
                 name: userName,
                 gender: userGender,
                 preference: crystalPreference,
                 additional: additionalInfo
-            }
-        );
+            },
+            timestamp: new Date().toISOString()
+        };
         
-        // 切换到结果页
-        formPage.classList.remove('active');
-        resultPage.classList.add('active');
-        
-        // 滚动到页面顶部
-        window.scrollTo(0, 0);
+        // 保存用户数据到后端
+        saveUserData(userData)
+            .then(() => {
+                // 生成推荐结果
+                generateRecommendations(
+                    userAspirations, 
+                    birthYear, 
+                    birthMonth, 
+                    birthDay, 
+                    birthHour, 
+                    {
+                        name: userName,
+                        gender: userGender,
+                        preference: crystalPreference,
+                        additional: additionalInfo
+                    }
+                );
+                
+                // 切换到结果页
+                formPage.classList.remove('active');
+                resultPage.classList.add('active');
+                
+                // 滚动到页面顶部
+                window.scrollTo(0, 0);
+            })
+            .catch(error => {
+                console.error('保存用户数据失败:', error);
+                // 即使保存失败，也继续显示推荐结果
+                generateRecommendations(
+                    userAspirations, 
+                    birthYear, 
+                    birthMonth, 
+                    birthDay, 
+                    birthHour, 
+                    {
+                        name: userName,
+                        gender: userGender,
+                        preference: crystalPreference,
+                        additional: additionalInfo
+                    }
+                );
+                
+                // 切换到结果页
+                formPage.classList.remove('active');
+                resultPage.classList.add('active');
+                
+                // 滚动到页面顶部
+                window.scrollTo(0, 0);
+            });
     });
+
+    // 保存用户数据到后端
+    async function saveUserData(userData) {
+        try {
+            
+            const response = await fetch('http://localhost:3000/api/save-user-data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            });
+            
+            if (!response.ok) {
+                throw new Error(`保存数据失败: ${response.status}`);
+            }
+            
+            const result = await response.json();
+            console.log('用户数据保存成功:', result);
+            
+            // 更新状态提示
+            statusMessage.textContent = '数据保存成功!';
+            statusMessage.classList.add('success');
+            
+            // 2秒后移除状态提示
+            setTimeout(() => {
+                statusMessage.classList.add('fade-out');
+                setTimeout(() => {
+                    document.body.removeChild(statusMessage);
+                }, 500);
+            }, 2000);
+            
+            return result;
+        } catch (error) {
+            console.error('保存用户数据时出错:', error);
+            throw error;
+        }
+    }
 
     // 根据用户输入生成水晶推荐
     function generateRecommendations(aspirations, year, month, day, hour, personalInfo) {
