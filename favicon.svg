@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景渐变 -->
+  <defs>
+    <linearGradient id="crystalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8a6bc5" />
+      <stop offset="100%" stop-color="#c56bae" />
+    </linearGradient>
+    
+  </defs>
+  
+  <!-- 六边形形状 (使用polygon) -->
+  <polygon points="30,0 60,15 60,45 30,60 0,45 0,15" fill="url(#crystalGradient)" />
+  
+</svg> 
