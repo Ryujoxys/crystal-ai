@@ -554,17 +554,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const result = await response.json();
             console.log('用户数据保存成功:', result);
             
-            // 更新状态提示
-            statusMessage.textContent = '数据保存成功!';
-            statusMessage.classList.add('success');
-            
-            // 2秒后移除状态提示
-            setTimeout(() => {
-                statusMessage.classList.add('fade-out');
-                setTimeout(() => {
-                    document.body.removeChild(statusMessage);
-                }, 500);
-            }, 2000);
             
             return result;
         } catch (error) {
