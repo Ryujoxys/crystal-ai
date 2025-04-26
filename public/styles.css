@@ -1516,4 +1516,34 @@ body {
     margin-left: 8px;
     vertical-align: middle;
     font-weight: bold;
+}
+
+/* Footer样式 */
+footer {
+    background-color: #f8f7fe;
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid rgba(138, 107, 197, 0.1);
+    margin-top: 20px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+footer p {
+    color: #666;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding: 15px 0;
+    }
+    
+    footer p {
+        font-size: 12px;
+    }
 } 
