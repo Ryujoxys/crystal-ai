@@ -28,7 +28,11 @@
 
 ## 本地运行
 
-直接在浏览器中打开`index.html`文件即可运行此应用。
+node version 22+
+npm install 
+npm run dev
+
+
 
 ## 备注
 
