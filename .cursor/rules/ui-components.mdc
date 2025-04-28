@@ -1,0 +1,129 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Crystal AI UI组件
+
+本项目前端UI组件在[index.html](mdc:index.html)中定义，样式在[styles.css](mdc:styles.css)中实现，交互逻辑在[script.js](mdc:script.js)中处理。
+
+## 页面组件
+
+### 首页组件
+
+```html
+<section id="home-page" class="page active">
+  <div class="home-hero">...</div>
+  <div class="home-scrollable-content">...</div>
+</section>
+```
+
+首页包含顶部显示的宣传内容和下方可滚动的项目介绍和用户评价。
+
+### 表单组件
+
+```html
+<section id="form-page" class="page">
+  <form id="crystal-form">
+    <div class="aspirations">...</div>
+    <div class="birth-info">...</div>
+    <div class="personal-info">...</div>
+  </form>
+</section>
+```
+
+表单页面收集用户诉求、生辰八字和个人信息。
+
+### 结果组件
+
+```html
+<section id="result-page" class="page">
+  <div class="result-container">
+    <div class="main-crystal">...</div>
+    <div class="secondary-crystals">...</div>
+    <div class="personalized-advice">...</div>
+  </div>
+</section>
+```
+
+结果页展示推荐的主水晶、次要水晶和个性化建议。
+
+### 加载组件
+
+```html
+<section id="loading-page" class="page">
+  <div class="loading-animation">...</div>
+</section>
+```
+
+在推荐计算过程中显示的动画加载页面。
+
+## 交互组件
+
+### 导航菜单
+
+```html
+<div class="navigation">
+  <div class="nav-item" data-page="home-page">首页</div>
+  <div class="nav-item" data-page="form-page">定制</div>
+  <div class="nav-item" data-page="about-page">关于</div>
+</div>
+```
+
+页面顶部或底部的导航菜单，用于在不同页面间切换。
+
+### 表单验证
+
+```javascript
+function validateForm() {
+  // 表单验证逻辑
+}
+```
+
+验证用户输入的表单数据，确保必填字段已填写并符合格式要求。
+
+### 调试面板
+
+```html
+<div id="debug-modal" class="debug-modal">
+  <div class="debug-modal-content">...</div>
+</div>
+```
+
+点击logo时显示的调试设置面板，用于配置API和测试连接。
+
+## 动画效果
+
+1. **页面过渡动画** - 使用CSS过渡效果实现页面切换的流畅动画
+2. **加载动画** - 使用CSS动画实现推荐计算过程中的水晶旋转效果
+3. **结果展示动画** - 推荐结果页面的渐显和滑入动画
+
+## 响应式设计
+
+所有UI组件都使用响应式设计，确保在不同屏幕尺寸的设备上都能正常显示:
+
+```css
+@media (max-width: 768px) {
+  /* 平板设备样式 */
+}
+
+@media (max-width: 480px) {
+  /* 手机设备样式 */
+}
+```
+
+## 颜色主题
+
+项目使用CSS变量定义主题颜色：
+
+```css
+:root {
+  --primary-color: #7b68ee;
+  --secondary-color: #e0b0ff;
+  --accent-color: #9370db;
+  --text-color: #333333;
+  --background-color: #f8f8f8;
+}
+```
+
+主题颜色在整个应用中保持一致，确保视觉统一。
