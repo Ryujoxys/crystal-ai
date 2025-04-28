@@ -1,0 +1,111 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Crystal AI Supabase集成
+
+本项目使用Supabase作为后端数据库，存储水晶数据和用户信息。
+
+## 配置设置
+
+Supabase的配置在[config/supabase.js](mdc:config/supabase.js)文件中：
+
+```javascript
+const { createClient } = require('@supabase/supabase-js');
+
+// Supabase配置
+const supabaseUrl = process.env.SUPABASE_URL || 'https://your-project-url.supabase.co';
+const supabaseKey = process.env.SUPABASE_KEY || 'your-anon-key';
+
+// 创建Supabase客户端
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+module.exports = supabase;
+```
+
+## 环境变量
+
+在根目录的`.env`文件中需要设置以下环境变量：
+
+```
+SUPABASE_URL=https://your-project-url.supabase.co
+SUPABASE_KEY=your-anon-key
+PORT=3000
+```
+
+## 数据表结构
+
+项目使用以下Supabase数据表：
+
+1. **crystals** - 存储水晶信息
+   - 详细结构见[crystal-database.mdc](mdc:.cursor/rules/crystal-database.mdc)
+
+2. **user_data** - 存储用户信息和诉求
+   ```sql
+   create table user_data (
+     id uuid primary key default uuid_generate_v4(),
+     aspirations text[] default '{}',
+     birth_year text,
+     birth_month text,
+     birth_day text,
+     birth_hour text,
+     name text,
+     gender text,
+     preference text[] default '{}',
+     additional_info text,
+     created_at timestamp with time zone default now(),
+     recommendation_id uuid references recommendations(id)
+   );
+   ```
+
+3. **recommendations** - 存储推荐结果
+   ```sql
+   create table recommendations (
+     id uuid primary key default uuid_generate_v4(),
+     main_crystal_id bigint references crystals(id),
+     secondary_crystal_ids bigint[] default '{}',
+     personalized_advice text,
+     compatibility_score int,
+     created_at timestamp with time zone default now()
+   );
+   ```
+
+## API集成
+
+服务器在[server.js](mdc:server.js)文件中实现了多个与Supabase交互的API：
+
+- `GET /api/crystals` - 获取所有水晶数据
+- `GET /api/crystals/:id` - 获取特定ID的水晶
+- `POST /api/recommend-with-db` - 根据用户输入从数据库查询匹配的水晶
+- `POST /api/save-user-data` - 保存用户数据到user_data表
+- `GET /api/statistics` - 获取系统使用统计数据
+
+## 客户端API调用
+
+前端在[script.js](mdc:script.js)中使用fetch API调用后端服务：
+
+```javascript
+// 示例：推荐请求
+async function requestRecommendation(userData) {
+  try {
+    const response = await fetch('/api/recommend-with-db', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(userData)
+    });
+    
+    if (!response.ok) throw new Error('推荐请求失败');
+    
+    return await response.json();
+  } catch (error) {
+    console.error('API错误:', error);
+    throw error;
+  }
+}
+```
+
+## 数据初始化和备份
+
+- 使用`npm run init-db`命令运行`scripts/supabase-setup.js`导入本地水晶数据到Supabase
+- 使用`npm run backup-db`命令运行`scripts/supabase-backup.js`将Supabase数据备份到本地
