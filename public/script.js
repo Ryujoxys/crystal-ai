@@ -13,6 +13,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const aiResultContainer = document.getElementById('ai-result');
     const aiTagsContainer = document.querySelector('.ai-tags');
     
+    // 保存AI分析结果的变量
+    let aiAnalysisInput = '';
+    let aiAnalysisTags = [];
+    
     // 八大诉求对照表
     const aspirationsMap = {
         '健康': 'health',
@@ -102,12 +106,22 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const data = await response.json();
             
+            // 保存AI分析的输入文本和结果
+            aiAnalysisInput = data.inputText || text;
+            aiAnalysisTags = data.tags || [];
+            
             // 返回分析结果
             return data.tags || [];
         } catch (error) {
             console.error('API调用失败:', error);
             // 出错时回退到关键词分析
-            return analyzeWithKeywords(text);
+            const fallbackResults = analyzeWithKeywords(text);
+            
+            // 保存回退分析的输入和结果
+            aiAnalysisInput = text;
+            aiAnalysisTags = fallbackResults;
+            
+            return fallbackResults;
         }
     }
     
@@ -319,6 +333,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 preference: crystalPreference,
                 additional: additionalInfo
             },
+            // 添加AI分析结果
+            aiInput: aiAnalysisInput,
+            aiTags: aiAnalysisTags,
             timestamp: new Date().toISOString()
         };
         

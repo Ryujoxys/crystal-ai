@@ -136,6 +136,8 @@ app.post('/api/save-user-data', async (req, res) => {
       gender: userData.personalInfo.gender,
       preference: userData.personalInfo.preference,
       additional_info: userData.personalInfo.additional,
+      ai_input: userData.aiInput || null,  // 保存AI分析的输入文本
+      ai_tags: userData.aiTags || null,    // 保存AI分析的标签结果
       created_at: new Date()
     }
 
@@ -328,7 +330,10 @@ app.post('/api/analyze-aspiration', async (req, res) => {
         console.log('用户原始输入:', text);
         console.log('最终处理后的结果标签:', results);
         
-        return res.json({ tags: results });
+        return res.json({ 
+            tags: results,
+            inputText: text  // 返回原始输入文本
+        });
         
     } catch (error) {
         console.error('处理请求失败:', error);
