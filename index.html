@@ -3,9 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>009Crystal</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- 资源预加载 -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    <link rel="preload" href="crystalDatabase.js" as="script">
+    <link rel="preload" href="favicon.svg" as="image" type="image/svg+xml">
+    <link rel="dns-prefetch" href="https://www.clarity.ms">
+    
+    <meta name="description" content="Crystal DIY - 基于生辰八字和个人诉求的定制化水晶推荐系统，助您找到最适合的能量水晶，平衡健康、财富、爱情、事业等多方面需求。">
+    <meta name="keywords" content="水晶推荐,生辰八字,水晶能量,定制水晶,健康水晶,财富水晶,爱情水晶,事业水晶,水晶能量调和,五行水晶">
+    <meta name="author" content="009Crystal">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://crystal.gomiliya.com/">
+    
+    <!-- Open Graph 协议 -->
+    <meta property="og:title" content="Crystal DIY - 基于生辰八字的定制化水晶推荐系统">
+    <meta property="og:description" content="根据您的生辰八字和个人诉求，为您推荐最适合的能量水晶，平衡能量，净化心灵，增强直觉，引导丰盛。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://crystal.gomiliya.com/">
+    <meta property="og:image" content="https://crystal.gomiliya.com/favicon.svg">
+    <meta property="og:site_name" content="Crystal DIY">
+    <meta property="og:locale" content="zh_CN">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Crystal DIY - 基于生辰八字的定制化水晶推荐系统">
+    <meta name="twitter:description" content="根据您的生辰八字和个人诉求，为您推荐最适合的能量水晶，平衡能量，净化心灵，增强直觉，引导丰盛。">
+    <meta name="twitter:image" content="https://crystal.gomiliya.com/favicon.svg">
+    
+    <!-- 其他SEO优化 -->
+    <meta name="application-name" content="Crystal DIY">
+    <meta name="theme-color" content="#8a6bc5">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Crystal DIY">
+    <meta name="format-detection" content="telephone=no">
+    
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <title>Crystal DIY - 基于生辰八字的定制化水晶推荐系统</title>
+    <link rel="stylesheet" href="styles.css" fetchpriority="high">
+    <link rel="stylesheet" href="css2.css" fetchpriority="low">
+    
+    <!-- 延迟加载非关键JavaScript -->
+    <script type="text/javascript" defer>
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "r9z88r9h7i");
+    </script>
+    
+    <!-- 结构化数据 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Crystal DIY",
+      "url": "https://crystal.gomiliya.com/",
+      "description": "基于生辰八字和个人诉求的定制化水晶推荐系统",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://crystal.gomiliya.com/?search={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    
+    <!-- 额外的结构化数据 - 产品 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "水晶定制推荐",
+      "description": "基于生辰八字和个人诉求的定制化水晶推荐服务",
+      "provider": {
+        "@type": "Organization",
+        "name": "Crystal DIY",
+        "url": "https://crystal.gomiliya.com/"
+      },
+      "serviceType": "水晶推荐",
+      "areaServed": "全球",
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "price": "0",
+        "priceCurrency": "CNY"
+      }
+    }
+    </script>
+    
 </head>
 <body>
     <div class="logo-container">
@@ -20,8 +107,7 @@
             <!-- 主页顶部内容 -->
             <div class="home-hero">
                 <div class="hero-content">
-                    <h1>Crystal DIY
-                    </h1>
+                    <h1>Crystal DIY</h1>
                     <p class="subtitle">基于您的生辰八字和个人诉求，为您推荐最适合的定制化水晶</p>
                     
                     <button id="start-btn" class="btn btn-highlight">开始定制</button>
@@ -35,87 +121,87 @@
             
             <!-- 下方滚动内容 -->
             <div class="home-scrollable-content">
-                <div class="home-content">
-                    <div class="intro-story">
+                <main class="home-content">
+                    <article class="intro-story">
                         <h2>水晶的神秘能量</h2>
                         
                         <div class="crystal-knowledge-container">
-                            <div class="crystal-origin crystal-info-block">
+                            <section class="crystal-origin crystal-info-block">
                                 <div class="info-icon"><span class="mystic-symbol">✦</span></div>
                                 <h3>大自然的馈赠</h3>
                                 <p>远古时期，地球深处的能量与宇宙辐射共鸣，历经千万年压力与热能淬炼，形成了蕴含星辰之力的水晶。每一块水晶都记录着独特的能量印记，是地球与宇宙对话的见证者。</p>
-                            </div>
+                            </section>
                             
-                            <div class="crystal-connection crystal-info-block">
+                            <section class="crystal-connection crystal-info-block">
                                 <div class="info-icon"><span class="mystic-symbol">⟡</span></div>
                                 <h3>能量的共振</h3>
                                 <p>水晶以特定频率振动，当与人体能量场相遇时，会产生微妙的共鸣。这种共鸣能够疏通身体能量阻塞，平衡紊乱的气场，犹如一场无声的能量之舞，重新调和内在与外在的平衡。</p>
-                            </div>
+                            </section>
                             
-                            <div class="crystal-selection crystal-info-block">
+                            <section class="crystal-selection crystal-info-block">
                                 <div class="info-icon"><span class="mystic-symbol">⌬</span></div>
                                 <h3>选择的奥秘</h3>
                                 <p>适合的水晶会以一种微妙的方式吸引你，仿佛命中注定的相遇。而我们的定制系统，通过古老的五行生克与现代的能量学原理，为你匹配最契合的水晶伴侣，放大你内在的力量，引导你走向丰盛。</p>
-                            </div>
+                            </section>
                             
-                            <div class="crystal-healing crystal-info-block">
+                            <section class="crystal-healing crystal-info-block">
                                 <div class="info-icon"><span class="mystic-symbol">⍟</span></div>
                                 <h3>转化的力量</h3>
                                 <p>水晶不仅仅是美丽的装饰，更是强大的能量转化器。它们能吸收负面能量，转化为积极的振动频率，如同黑暗中的明灯，引导我们穿越困境，找到内心深处的平静与力量，开启自我疗愈之旅。</p>
-                            </div>
+                            </section>
                         </div>
                         
-                        <div class="crystal-benefits-band">
-                            <div class="benefit-item">
+                        <div class="crystal-benefits-band" role="list" aria-label="水晶能量效益">
+                            <div class="benefit-item" role="listitem">
                                 <span class="benefit-icon">❈</span>
                                 <span class="benefit-text">平衡能量</span>
                             </div>
-                            <div class="benefit-item">
+                            <div class="benefit-item" role="listitem">
                                 <span class="benefit-icon">✾</span>
                                 <span class="benefit-text">净化心灵</span>
                             </div>
-                            <div class="benefit-item">
+                            <div class="benefit-item" role="listitem">
                                 <span class="benefit-icon">❋</span>
                                 <span class="benefit-text">增强直觉</span>
                             </div>
-                            <div class="benefit-item">
+                            <div class="benefit-item" role="listitem">
                                 <span class="benefit-icon">✻</span>
                                 <span class="benefit-text">引导丰盛</span>
                             </div>
                         </div>
                         
-                        <div class="crystal-quote">
+                        <blockquote class="crystal-quote">
                             <p>"水晶是蕴藏在石头中的光，是凝固的星辰，是大地与宇宙相互交融的载体。"</p>
-                        </div>
-                    </div>
+                        </blockquote>
+                    </article>
                     
-                    <div class="testimonials">
+                    <section class="testimonials">
                         <h2>用户心得分享</h2>
-                        <div class="testimonial-container">
-                            <div class="testimonial-card">
+                        <div class="testimonial-container" role="list" aria-label="用户心得">
+                            <article class="testimonial-card" role="listitem">
                                 <div class="testimonial-avatar crystal-shape"></div>
                                 <div class="testimonial-content">
                                     <p>"紫水晶改善了我的睡眠质量，每晚放在床头，焦虑感减轻，醒来精力充沛。"</p>
                                     <div class="testimonial-author">— 星辰梦想家</div>
                                 </div>
-                            </div>
-                            <div class="testimonial-card">
+                            </article>
+                            <article class="testimonial-card" role="listitem">
                                 <div class="testimonial-avatar crystal-shape"></div>
                                 <div class="testimonial-content">
                                     <p>"黄水晶为我带来财运，工作障碍减少，意外收获升职好消息。这个定制系统太神奇了！"</p>
                                     <div class="testimonial-author">— 云间漫步者</div>
                                 </div>
-                            </div>
-                            <div class="testimonial-card">
+                            </article>
+                            <article class="testimonial-card" role="listitem">
                                 <div class="testimonial-avatar crystal-shape"></div>
                                 <div class="testimonial-content">
                                     <p>"月光石帮我度过情感低谷，触摸它时总能感受到宁静能量，像是找到了心灵的港湾。"</p>
                                     <div class="testimonial-author">— 幻光守望</div>
                                 </div>
-                            </div>
+                            </article>
                         </div>
-                    </div>
-                </div>
+                    </section>
+                </main>
             </div>
         </section>
 
@@ -268,7 +354,7 @@
         <!-- 结果页 -->
         <section id="result-page" class="page">
             <h1>您的定制水晶推荐</h1>
-            <div id="recommendation-container">
+            <div id="recommendation-container" role="list" aria-label="推荐水晶列表">
                 <!-- 推荐结果将由JS动态生成 -->
             </div>
             <button id="back-btn" class="btn">重新定制</button>
@@ -278,7 +364,14 @@
         </section>
     </div>
 
-    <script src="crystalDatabase.js"></script>
-    <script src="script.js"></script>
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2023-<span id="current-year"></span> Crystal DIY. 基于生辰八字的定制水晶推荐系统。</p>
+            <script>document.getElementById('current-year').textContent = new Date().getFullYear();</script>
+        </div>
+    </footer>
+
+    <script src="crystalDatabase.js" defer></script>
+    <script src="script.js" defer></script>
 </body>
 </html> 
