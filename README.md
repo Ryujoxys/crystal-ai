@@ -1,39 +1,89 @@
-# 水晶定制推荐系统
+# Crystal DIY - 水晶推荐系统
 
-一个基于用户诉求和生辰八字信息提供个性化水晶推荐的网站应用。
+基于生辰八字和个人诉求的定制化水晶推荐系统。
 
-## 功能特点
+## 项目说明
 
-- 用户友好的界面设计
-- 基于用户诉求（健康、财富、爱情等）进行推荐
-- 结合生辰八字信息（年、月、日、时辰）分析用户五行属性
-- 根据多维度匹配算法推荐最适合的水晶
-- 响应式设计，适配各种设备
+该项目是一个水晶推荐系统，可以基于用户的生辰八字和个人诉求，为用户推荐最适合的水晶组合。
+
+主要功能包括：
+- 生辰八字输入与分析
+- 个人诉求选择
+- 自定义诉求AI分析
+- 定制化水晶推荐
 
 ## 技术栈
 
-- HTML5
-- CSS3 (Flexbox/Grid布局)
-- 原生JavaScript
-- 响应式设计
+- 前端：HTML5, CSS3, JavaScript (原生)
+- 后端：Node.js, Express.js
+- 数据库：Supabase
+- AI模型：GLM-4-32B-0414
 
-## 如何使用
+## 环境要求
 
-1. 在主页点击"开始定制"按钮
-2. 选择您的个人诉求（可多选）
-3. 填写您的生辰八字信息（年、月、日、时辰）
-4. 可选择填写其他需求或备注
-5. 点击"获取定制推荐"按钮
-6. 查看为您推荐的个性化水晶
+- Node.js v14.0.0 或更高版本
+- npm v6.0.0 或更高版本
 
-## 本地运行
+## 安装与运行
 
-node version 22+
-npm install 
+1. 克隆项目
+
+```bash
+git clone https://github.com/yourusername/crystal-ai.git
+cd crystal-ai
+```
+
+2. 安装依赖
+
+```bash
+npm install
+```
+
+3. 创建 `.env` 文件
+
+在项目根目录创建 `.env` 文件，设置以下环境变量：
+
+```
+PORT=3000
+AI_API_KEY=sk-evgwlaexinmsvdrvlixvjjytqjwjrsvymnwifkbzxpbjduzf
+AI_API_URL=https://api.siliconflow.cn/v1/chat/completions
+AI_MODEL=THUDM/GLM-4-32B-0414
+```
+
+4. 启动开发服务器
+
+```bash
 npm run dev
+```
 
+5. 访问应用
 
+打开浏览器访问: `http://localhost:3000`
 
-## 备注
+## 功能使用
 
-此应用为MVP（最小可行产品）版本，仅作为水晶推荐参考，不涉及水晶价格和售卖信息。 
+### 自定义诉求AI分析
+
+1. 在诉求选择界面勾选"自定义"选项
+2. 在文本框中输入您的具体诉求
+3. 点击"AI分析"按钮
+4. 系统会自动分析您的诉求，提取关键需求
+5. 点击"应用结果"按钮，自动勾选相关诉求类型
+
+## 项目结构
+
+- `/public` - 前端静态资源
+  - `index.html` - 主页面
+  - `styles.css` - 样式表
+  - `script.js` - 前端JavaScript
+  - `crystalDatabase.js` - 水晶数据库
+- `server.js` - 后端服务器
+- `config/` - 配置文件
+
+## 开发者
+
+- [Your Name](https://github.com/yourusername)
+
+## 许可证
+
+MIT 
